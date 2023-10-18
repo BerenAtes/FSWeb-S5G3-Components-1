@@ -115,3 +115,49 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+/*Adım1*/
+
+const haberYapici = (dataArray) => {
+  const article = document.createElement("div");
+  article.classList.add("article");
+
+  const articleH = document.createElement("h2");
+  articleH.textContent = dataArray.baslik;
+  article.appendChild(articleH);
+
+  const tarihP = document.createElement("p");
+  tarihP.classList.add("tarih");
+  tarihP.textContent = dataArray.tarih;
+  article.appendChild(tarihP);
+
+  const paragraph1 = document.createElement("p");
+  paragraph1.textContent = dataArray.ilkParagraf;
+  article.appendChild(paragraph1);
+
+  const paragraph2 = document.createElement("p");
+  paragraph2.textContent = dataArray.ikinciParagraf;
+  article.appendChild(paragraph2);
+
+  const paragraph3 = document.createElement("p");
+  paragraph3.textContent = dataArray.ucuncuParagraf;
+  article.appendChild(paragraph3);
+
+  const btn = document.createElement("button");
+  btn.classList.add("expandButton");
+  btn.textContent = "+";
+  article.appendChild(btn);
+  /*Adım2*/
+  btn.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  });
+  /*Adım3*/
+  return article;
+};
+/*Adım4*/
+const articlesContainer = document.querySelector(".articles");
+
+data.forEach((eleman) => {
+  const newElement = haberYapici(eleman);
+  articlesContainer.appendChild(newElement);
+});
